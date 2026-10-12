@@ -52,20 +52,19 @@ You work across many projects. `uhegit` finds all your Git repositories automati
   UheGit — Your Workspace
   ──────────────────────────────────────────────────────────────────────
 
-  REPOSITORY       BRANCH                     STATUS                    SYNC
-  Emplyo           main                       Uncommitted (23~ 1- 14?)  Up to date
-  WashFlow         main                       Uncommitted (13~ 15?)     Up to date
-  hackathon        master                     Uncommitted (8~ 14?)      No upstream
-  uv               fix/stderr-eagain          ↑ Unpushed                ↑ 1 ahead*
-  Amrita-Events    main                       ✓ Clean                   Up to date
-  pixcrest         main                       ✓ Clean                   Up to date
-  ToolJet          fix/18247-dropdown-query…  ✓ Clean                   Up to date
+  REPOSITORY    BRANCH          STATUS                    SYNC
+  api-service   feat/payments   Uncommitted (3~ 1- 2?)    Up to date
+  mobile-app    main            Uncommitted (8~ 5?)       No upstream
+  dashboard     fix/dark-mode   ↑ Unpushed                ↑ 2 ahead*
+  my-cli-tool   main            ✓ Clean                   Up to date
+  backend       main            ✓ Clean                   Up to date
+  docs-site     main            ✓ Clean                   Up to date
 
-  15 repositories | 5 clean | 10 need attention
+  6 repositories | 3 clean | 3 need attention
 
   NEXT TASKS
-  pixcrest: Write tests for the auth flow
-  uv:       Fix flaky test on Windows CI
+  api-service: Finish payment webhook handler
+  dashboard:   Review PR before merging
 ```
 
 ---
@@ -198,7 +197,7 @@ uhegit repos                  # List all tracked repositories
 uhegit repos --json           # As JSON
 
 uhegit remove <repo>          # Stop tracking a repo (files are NEVER deleted)
-uhegit remove pixcrest
+uhegit remove my-old-project
 ```
 
 ---
@@ -208,19 +207,19 @@ uhegit remove pixcrest
 ```bash
 # Save a note for the current branch of a repository
 uhegit note <repo> "your note"
-uhegit note pixcrest "Auth flow half-done — token refresh still failing"
-uhegit note my-app "Waiting for design assets from team"
+uhegit note my-app "Auth flow half-done — token refresh still failing"
+uhegit note my-api "Waiting for design assets from team"
 
 # Clear a note
-uhegit note pixcrest ""
+uhegit note my-app ""
 
 # Set what to do next when you return
 uhegit next <repo> "your next task"
-uhegit next pixcrest "Add retry logic for the network layer"
-uhegit next uv "Fix flaky test on Windows CI before merging"
+uhegit next my-app "Add retry logic for the network layer"
+uhegit next my-cli "Write help text for the new subcommand"
 
 # Clear the next task
-uhegit next pixcrest ""
+uhegit next my-app ""
 ```
 
 > **Notes are per branch.** If you're on `feat/auth` and switch to `main`,
@@ -233,14 +232,14 @@ uhegit next pixcrest ""
 ```bash
 # Record a read-only snapshot of the current repo state
 uhegit checkpoint <repo>
-uhegit checkpoint pixcrest
+uhegit checkpoint my-app
 # → Saves: branch, commit hash, working-tree summary
 # → Does NOT modify your repository in any way
 
 # Resume work — shows everything you need to get back in context
 uhegit resume <repo>
-uhegit resume pixcrest
-uhegit resume pixcrest --json     # As JSON
+uhegit resume my-app
+uhegit resume my-app --json     # As JSON
 ```
 
 **Resume output:**
@@ -249,8 +248,8 @@ uhegit resume pixcrest --json     # As JSON
   UheGit — Resume Session
   ──────────────────────────────────────────────────
 
-  Repository: pixcrest
-  Path:       /home/you/Projects/pixcrest
+  Repository: my-app
+  Path:       /home/you/Projects/my-app
   Branch:     feat/auth
   Commit:     abc1234 — Add token refresh endpoint (2 hours ago)
   Changes:    3 modified, 1 untracked
@@ -268,7 +267,7 @@ uhegit resume pixcrest --json     # As JSON
   3 modified, 1 untracked
 
   Continue:
-  cd "/home/you/Projects/pixcrest"
+  cd "/home/you/Projects/my-app"
 ```
 
 ---
@@ -279,13 +278,13 @@ uhegit resume pixcrest --json     # As JSON
 uhegit path <repo>
 
 # Jump to a project in bash/zsh
-cd "$(uhegit path pixcrest)"
+cd "$(uhegit path my-app)"
 
 # Jump to a project in PowerShell
-Set-Location (uhegit path pixcrest)
+Set-Location (uhegit path my-app)
 
 # Open in VS Code
-code "$(uhegit path pixcrest)"
+code "$(uhegit path my-app)"
 ```
 
 ---
@@ -295,7 +294,7 @@ code "$(uhegit path pixcrest)"
 ```bash
 # Remove stored notes, tasks, and checkpoints (asks for confirmation)
 uhegit forget <repo>
-uhegit forget pixcrest
+uhegit forget my-app
 # → Your repository files are NOT affected
 ```
 
@@ -437,8 +436,8 @@ uhegit --json
 {
   "repositories": [
     {
-      "name": "pixcrest",
-      "path": "/home/you/Projects/pixcrest",
+      "name": "my-app",
+      "path": "/home/you/Projects/my-app",
       "git": {
         "branch": "feat/auth",
         "detached_head": false,
@@ -469,10 +468,10 @@ uhegit --json
     }
   ],
   "summary": {
-    "total": 15,
-    "clean": 5,
-    "dirty": 7,
-    "needs_attention": 10,
+    "total": 6,
+    "clean": 3,
+    "dirty": 2,
+    "needs_attention": 3,
     "with_errors": 0
   }
 }
