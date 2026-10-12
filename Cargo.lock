@@ -846,6 +846,7 @@ dependencies = [
  "clap_complete",
  "crossterm",
  "directories",
+ "libc",
  "predicates",
  "rayon",
  "serde",

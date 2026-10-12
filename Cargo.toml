@@ -2,7 +2,7 @@
 name = "uhegit"
 version = "0.1.0"
 edition = "2021"
-rust-version = "1.75"
+rust-version = "1.82"
 authors = ["UheGit Contributors"]
 description = "Automatic Git repository discovery, status overview, and work-session memory for developers"
 homepage = "https://github.com/tabrejansary/uhegit"
@@ -33,6 +33,9 @@ chrono = { version = "0.4", features = ["serde"] }
 rayon = "1"
 crossterm = "0.27"
 tempfile = "3"
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
 
 [dev-dependencies]
 assert_cmd = "2"

@@ -52,9 +52,9 @@ jobs:
         run: cargo clippy --all-targets --all-features -- -D warnings
 
   msrv:
-    name: MSRV check (Rust 1.75)
+    name: MSRV check (Rust 1.82)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@1.75
+      - uses: dtolnay/rust-toolchain@1.82
       - run: cargo check --all-targets
