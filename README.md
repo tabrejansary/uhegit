@@ -1,10 +1,7 @@
 <div align="center">
 
-<h1>
-  <img src="https://raw.githubusercontent.com/tabrejansary/uhegit/main/assets/logo.svg" width="48" alt="UheGit logo" />
-  <br/>
-  uhegit
-</h1>
+  <img src="assets/logo.png" width="96" alt="UheGit logo" />
+  <h1>uhegit</h1>
 
 <p align="center">
   <strong>Automatic Git workspace discovery, live status overview, and work-session memory — all from your terminal.</strong>
