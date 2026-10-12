@@ -2,7 +2,7 @@
 name = "uhegit"
 version = "0.1.0"
 edition = "2021"
-rust-version = "1.82"
+rust-version = "1.85"
 authors = ["UheGit Contributors"]
 description = "Automatic Git repository discovery, status overview, and work-session memory for developers"
 homepage = "https://github.com/tabrejansary/uhegit"
