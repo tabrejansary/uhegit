@@ -88,15 +88,37 @@ You work across many projects. `uhegit` finds all your Git repositories automati
 
 ## 📦 Install
 
-### From crates.io *(coming soon)*
+### Windows — one command
 
-```bash
-cargo install uhegit
+```powershell
+winget install tabrejansary.uhegit
 ```
 
-### From GitHub Releases *(pre-built binaries)*
+> No Rust, no setup, no download page. Works on Windows 10 and 11.
 
-Download the binary for your platform from [GitHub Releases](https://github.com/tabrejansary/uhegit/releases/latest):
+---
+
+### macOS & Linux — download binary
+
+```bash
+# macOS (Apple Silicon)
+curl -fsSL https://github.com/tabrejansary/uhegit/releases/latest/download/uhegit-macos-aarch64 -o uhegit
+chmod +x uhegit && sudo mv uhegit /usr/local/bin/
+
+# macOS (Intel)
+curl -fsSL https://github.com/tabrejansary/uhegit/releases/latest/download/uhegit-macos-x86_64 -o uhegit
+chmod +x uhegit && sudo mv uhegit /usr/local/bin/
+
+# Linux x64
+curl -fsSL https://github.com/tabrejansary/uhegit/releases/latest/download/uhegit-linux-x86_64 -o uhegit
+chmod +x uhegit && sudo mv uhegit /usr/local/bin/
+```
+
+---
+
+### All platforms — pre-built binaries
+
+Download from [GitHub Releases](https://github.com/tabrejansary/uhegit/releases/latest):
 
 | Platform | File |
 |---|---|
@@ -106,18 +128,15 @@ Download the binary for your platform from [GitHub Releases](https://github.com/
 | Linux x64 | `uhegit-linux-x86_64` |
 | Linux ARM64 | `uhegit-linux-aarch64` |
 
-### Build from Source *(requires Rust 1.75+)*
+### Have Rust? Install from source
 
 ```bash
-git clone https://github.com/tabrejansary/uhegit
-cd uhegit
-cargo install --path .
+cargo install --git https://github.com/tabrejansary/uhegit
 ```
 
 ### Requirements
 
 - **Git** must be installed and available in your `PATH`
-- Rust 1.75+ (only needed when building from source)
 
 ---
 
