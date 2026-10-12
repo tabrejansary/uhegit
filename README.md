@@ -105,23 +105,6 @@ brew tap tabrejansary/uhegit
 brew install uhegit
 ```
 
----
-
-### macOS & Linux — download binary
-
-```bash
-# macOS (Apple Silicon)
-curl -fsSL https://github.com/tabrejansary/uhegit/releases/latest/download/uhegit-macos-aarch64 -o uhegit
-chmod +x uhegit && sudo mv uhegit /usr/local/bin/
-
-# macOS (Intel)
-curl -fsSL https://github.com/tabrejansary/uhegit/releases/latest/download/uhegit-macos-x86_64 -o uhegit
-chmod +x uhegit && sudo mv uhegit /usr/local/bin/
-
-# Linux x64
-curl -fsSL https://github.com/tabrejansary/uhegit/releases/latest/download/uhegit-linux-x86_64 -o uhegit
-chmod +x uhegit && sudo mv uhegit /usr/local/bin/
-```
 
 ---
 
