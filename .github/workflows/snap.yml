@@ -1,0 +1,59 @@
+name: Publish Snap
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:  # allow manual trigger
+
+jobs:
+  snap:
+    name: Build and publish snap
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download Linux binary from release
+        run: |
+          TAG=${GITHUB_REF_NAME:-v0.1.0}
+          curl -fsSL "https://github.com/tabrejansary/uhegit/releases/download/${TAG}/uhegit-linux-x86_64" \
+            -o uhegit-linux-x86_64
+          chmod +x uhegit-linux-x86_64
+
+      - name: Create snap directory structure
+        run: |
+          mkdir -p snap
+          cat > snap/snapcraft.yaml << 'EOF'
+          name: uhegit
+          version: '0.1.0'
+          summary: Automatic Git workspace discovery and work-session memory
+          description: |
+            UheGit automatically discovers all your Git repositories, shows
+            their live status in one clean table (branch, changes, sync), and
+            remembers your notes and next tasks per branch so you can resume
+            work in seconds.
+          grade: stable
+          confinement: classic
+          base: core22
+
+          parts:
+            uhegit:
+              plugin: nil
+              source: .
+              override-build: |
+                install -Dm755 uhegit-linux-x86_64 $SNAPCRAFT_PART_INSTALL/bin/uhegit
+
+          apps:
+            uhegit:
+              command: bin/uhegit
+          EOF
+
+      - name: Build snap
+        uses: snapcore/action-build@v1
+
+      - name: Publish snap to stable channel
+        uses: snapcore/action-publish@v1
+        env:
+          SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_STORE_CREDENTIALS }}
+        with:
+          snap: uhegit_*.snap
+          release: stable
