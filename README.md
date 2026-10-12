@@ -98,6 +98,15 @@ winget install tabrejansary.uhegit
 
 ---
 
+### macOS & Linux — Homebrew
+
+```bash
+brew tap tabrejansary/uhegit
+brew install uhegit
+```
+
+---
+
 ### macOS & Linux — download binary
 
 ```bash
