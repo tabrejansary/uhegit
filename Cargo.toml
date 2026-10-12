@@ -1,0 +1,46 @@
+[package]
+name = "uhegit"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+authors = ["UheGit Contributors"]
+description = "Automatic Git repository discovery, status overview, and work-session memory for developers"
+homepage = "https://github.com/tabrejansary/uhegit"
+repository = "https://github.com/tabrejansary/uhegit"
+license = "MIT"
+keywords = ["git", "developer-tools", "cli", "workspace", "productivity"]
+categories = ["command-line-utilities", "development-tools"]
+readme = "README.md"
+exclude = [".github/", "tests/fixtures/"]
+
+[lib]
+name = "uhegit"
+path = "src/lib.rs"
+
+[[bin]]
+name = "uhegit"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4", features = ["derive", "env"] }
+clap_complete = "4"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1"
+thiserror = "2"
+directories = "6"
+chrono = { version = "0.4", features = ["serde"] }
+rayon = "1"
+crossterm = "0.28"
+tempfile = "3"
+
+[dev-dependencies]
+assert_cmd = "2"
+predicates = "3"
+tempfile = "3"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
