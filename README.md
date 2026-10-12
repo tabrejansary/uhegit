@@ -48,24 +48,9 @@
 
 You work across many projects. `uhegit` finds all your Git repositories automatically, shows their live status in one clean table, and remembers exactly where you left off on each branch — so you can switch projects in seconds, not minutes.
 
-```
-  UheGit — Your Workspace
-  ──────────────────────────────────────────────────────────────────────
-
-  REPOSITORY    BRANCH          STATUS                    SYNC
-  api-service   feat/payments   Uncommitted (3~ 1- 2?)    Up to date
-  mobile-app    main            Uncommitted (8~ 5?)       No upstream
-  dashboard     fix/dark-mode   ↑ Unpushed                ↑ 2 ahead*
-  my-cli-tool   main            ✓ Clean                   Up to date
-  backend       main            ✓ Clean                   Up to date
-  docs-site     main            ✓ Clean                   Up to date
-
-  6 repositories | 3 clean | 3 need attention
-
-  NEXT TASKS
-  api-service: Finish payment webhook handler
-  dashboard:   Review PR before merging
-```
+<p align="center">
+  <img src="assets/demo.png" alt="UheGit Workspace Overview" width="100%" />
+</p>
 
 ---
 
